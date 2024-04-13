@@ -70,7 +70,7 @@ const Login = (props) => {
             btnLabel={"Login"}
             press={() => alert("Fuck U!")}
           />
-          <View style={{borderBottomColor:'black', borderBottomWidth:1}}/>
+     
           <View
             style={{
               display: "flex",

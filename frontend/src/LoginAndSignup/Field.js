@@ -16,8 +16,6 @@ const Field = (props) => {
         padding:15,
       }}
       placeholderTextColor={darkGreen}
-      secureTextEntry={true}
-      
     ></TextInput>
   );
 };
