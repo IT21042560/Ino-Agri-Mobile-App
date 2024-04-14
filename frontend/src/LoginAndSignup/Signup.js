@@ -25,10 +25,11 @@ const Signup = (props) => {
           contactno,
           password
         }
-        axios.post('',ob).then(()=>{
-          alert('FK U!');
+        axios.post('http://192.168.1.100:8086/acc/signup',ob).then(()=>{
+          alert('User Registred!');
+          props.navigation.navigate("Login")
         }).catch(()=>{
-          alert('FK U!');
+          alert('FK U 2!');
         })
       }else{
         alert('bitch')
