@@ -7,35 +7,45 @@ import UserApi from "../Api/UserApi";
 import axios from "axios";
 
 const Signup = (props) => {
-
-  const [fullname,setFullName] = useState("");
-  const [email,setEmail] = useState("");
-  const [location,setLocation] = useState("");
-  const [contactno,setContactNo] = useState("");
-  const [password,setPassword] = useState("");
-  const [conpassword,setConPassword] = useState("");
+  const [uName, setFullName] = useState("");
+  const [uEmail, setEmail] = useState("");
+  const [uLocation, setLocation] = useState("");
+  const [uContactNo, setContactNo] = useState("");
+  const [uPassword, setPassword] = useState("");
+  const [conpassword, setConPassword] = useState("");
 
   const usrSignUp = () => {
-    if(fullname != "" && email != "" && location != "" && contactno != "" && password != "" && conpassword != ""){
-      if(conpassword === password){
+    if (
+      uName != "" &&
+      uEmail != "" &&
+      uLocation != "" &&
+      uContactNo != "" &&
+      uPassword != "" &&
+      conpassword != ""
+    ) {
+      if (conpassword === uPassword) {
         const ob = {
-          fullname,
-          email,
-          location,
-          contactno,
-          password
-        }
-        axios.post('http://192.168.1.100:8086/acc/signup',ob).then(()=>{
-          alert('User Registred!');
-          props.navigation.navigate("Login")
-        }).catch(()=>{
-          alert('FK U 2!');
-        })
-      }else{
-        alert('bitch')
+          uName,
+          uEmail,
+          uLocation,
+          uContactNo,
+          uPassword,
+        };
+        console.log('check',ob)
+        UserApi
+          .post("/signup", ob)
+          .then(() => {
+            alert("User Registred!");
+            props.navigation.navigate("Login");
+          })
+          .catch(() => {
+            alert("FK U 2!");
+          });
+      } else {
+        alert("bitch");
       }
-    }else{
-      alert('Bitch & motherfucker')
+    } else {
+      alert("Bitch & motherfucker");
     }
   };
 
@@ -85,7 +95,7 @@ const Signup = (props) => {
             }}
             placeholderTextColor={darkGreen}
             placeholder="Full Name"
-            onChangeText={(e)=>setFullName(e)}
+            onChangeText={(e) => setFullName(e)}
           ></TextInput>
 
           <TextInput
@@ -98,7 +108,7 @@ const Signup = (props) => {
               marginVertical: 10,
               padding: 15,
             }}
-            onChangeText={(e)=>setEmail(e)}
+            onChangeText={(e) => setEmail(e)}
             placeholderTextColor={darkGreen}
             placeholder="Email"
             keyboardType="email-address"
@@ -114,7 +124,7 @@ const Signup = (props) => {
               marginVertical: 10,
               padding: 15,
             }}
-            onChangeText={(e)=>setLocation(e)}
+            onChangeText={(e) => setLocation(e)}
             placeholderTextColor={darkGreen}
             placeholder="Location"
           ></TextInput>
@@ -129,7 +139,7 @@ const Signup = (props) => {
               marginVertical: 10,
               padding: 15,
             }}
-            onChangeText={(e)=>setContactNo(e)}
+            onChangeText={(e) => setContactNo(e)}
             placeholderTextColor={darkGreen}
             placeholder="Contact No"
           ></TextInput>
@@ -144,7 +154,7 @@ const Signup = (props) => {
               marginVertical: 10,
               padding: 15,
             }}
-            onChangeText={(e)=>setPassword(e)}
+            onChangeText={(e) => setPassword(e)}
             placeholderTextColor={darkGreen}
             placeholder="Password"
             secureTextEntry={true}
@@ -160,7 +170,7 @@ const Signup = (props) => {
               marginVertical: 10,
               padding: 15,
             }}
-            onChangeText={(e)=>setConPassword(e)}
+            onChangeText={(e) => setConPassword(e)}
             placeholderTextColor={darkGreen}
             placeholder="Confirm Password"
             secureTextEntry={true}

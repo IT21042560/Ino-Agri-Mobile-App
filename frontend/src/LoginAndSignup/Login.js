@@ -1,11 +1,15 @@
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
+import React, {useContext} from "react";
 import Background from "./Background";
 import { darkGreen } from "./LandingPageConstants";
 import Field from "./Field";
 import LandingPageButton from "./LandingPageButton";
+import { AuthContext } from "../Context/AuthContext";
 
 const Login = (props) => {
+
+  const {UserLogin} = useContext(AuthContext);
+
   return (
     <Background>
       <View style={{ alignItems: "center", width: 400 }}>
@@ -64,12 +68,14 @@ const Login = (props) => {
               Forgot Password?{" "}
             </Text>
           </View>
+       
           <LandingPageButton
             textColor="white"
             bgColor={darkGreen}
             btnLabel={"Login"}
-            press={() => alert("Fuck U!")}
+            press={() => {UserLogin()}}
           />
+
      
           <View
             style={{
