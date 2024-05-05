@@ -7,6 +7,7 @@ import Signup from "./src/LoginAndSignup/Signup";
 import Login from "./src/LoginAndSignup/Login";
 import { AuthContext } from "./src/Context/AuthContext";
 import Home from "./src/Screen/Home/Home";
+import PestDashboard from "./src/PestControll/PestDashboard";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,8 @@ export default function AppNav() {
       {userToken !== null ? (
         <Stack.Navigator screenOptions={{ headerShown: false }}> 
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="PestDashboard" component={PestDashboard} />
+
         </Stack.Navigator>
       ) : (
         <Stack.Navigator screenOptions={{ headerShown: false }}>

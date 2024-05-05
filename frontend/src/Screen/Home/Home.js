@@ -3,22 +3,30 @@ import React ,{useContext}  from 'react'
 import LandingPageButton from '../../LoginAndSignup/LandingPageButton'
 import { AuthContext } from "../../Context/AuthContext";
 
-export default function Home() {
+const Home = (props) => {
 
     const {UserLogOut} = useContext(AuthContext);
 
 
   return (
-    <View>
+    <View style={{ alignItems: "center", width: 400 }}>
       <Text>Home</Text>
       <LandingPageButton 
          textColor="white"
-            bgColor={darkGreen}
-            btnLabel={"Login"}
+            bgColor={'black'}
+            btnLabel={"Logout"}
             press={() => {UserLogOut()}}
+      />
+      <LandingPageButton 
+         textColor="white"
+            bgColor={'black'}
+            btnLabel={"Pest Detect"}
+            press={() => props.navigation.navigate("PestDashboard")}
       />
     </View>
   )
 }
 
 const styles = StyleSheet.create({})
+
+export default Home;
