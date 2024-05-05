@@ -39,13 +39,13 @@ const Signup = (props) => {
             props.navigation.navigate("Login");
           })
           .catch(() => {
-            alert("FK U 2!");
+            alert("Error");
           });
       } else {
-        alert("bitch");
+        alert("Error");
       }
     } else {
-      alert("Bitch & motherfucker");
+      alert("Error");
     }
   };
 

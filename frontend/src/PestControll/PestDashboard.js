@@ -13,9 +13,12 @@ import * as MediaLibrary from "expo-media-library";
 import Button from "./Button";
 import axios from "axios";
 import * as ImagePicker from "expo-image-picker";
-
+import AntDesign from "@expo/vector-icons/AntDesign";
+import Feather from "@expo/vector-icons/Feather";
 import * as Permissions from "expo-permissions";
 import Constants from "expo-constants";
+import Background from "../LoginAndSignup/Background";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 export default function PestDashboard(props) {
   const [hasCamaraPermission, setHasCamaraPermission] = useState(null);
@@ -139,33 +142,31 @@ export default function PestDashboard(props) {
   };
 
   return (
-    <View
-      style={{
-        alignItems: "center",
-        width: 400,
-        marginTop: 50,
-        backgroundColor: "pink",
-        height: 200,
-      }}
-    >
-      {!image ? (
-        <View>
-          <Text>PestDashboard</Text>
+    <Background>
+      <View
+        style={{
+          backgroundColor: "#006A42",
+          height: 50,
+          width: "100%",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        <View style={{ padding: 10 }}>
+          <Feather name="menu" size={30} color="white" />
+        </View>
+        <View style={{ padding: 10 }}>
+          <Text style={{ fontSize: 24, fontWeight: "bold", color: "white" }}>
+            Pest Control
+          </Text>
+        </View>
+        <View style={{ paddingRight: 30, paddingTop: 10 }}>
+          <AntDesign name="back" size={25} color="white" onPress={() => props.navigation.navigate("Home")}/>
+        </View>
+      </View>
 
-          <View
-            style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-          >
-            <Button
-              title={"Pick an image from camera roll"}
-              onpress={pickImage}
-            />
-            {image && (
-              <Image
-                source={{ uri: image }}
-                style={{ width: 200, height: 200 }}
-              />
-            )}
-          </View>
+      {!image ? (
+        <View style={{ marginLeft: 12, paddingTop: 10 }}>
           <Camera
             style={styles.camara}
             type={type}
@@ -206,9 +207,10 @@ export default function PestDashboard(props) {
           </Camera>
         </View>
       ) : (
-        <Image source={{ uri: image }} style={styles.camara} />
+        <View style={{ marginLeft: 10 }}>
+          <Image source={{ uri: image }} style={styles.camara} />
+        </View>
       )}
-
       {image ? (
         <View
           style={{
@@ -228,12 +230,25 @@ export default function PestDashboard(props) {
       ) : (
         <Button title={"Take a picture"} icon="camera" onpress={takePicture} />
       )}
-    </View>
+
+      <View style={{ marginLeft: 60 }}>
+        <Button
+          title={"Pick an image from camera roll"}
+          onpress={pickImage}
+          color={"white"}
+          icon={"picasa"}
+        />
+        {image && (
+          <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
+        )}
+      </View>
+    </Background>
   );
 }
 
 const styles = StyleSheet.create({
   camara: {
-    height: 50,
+    height: 400,
+    width: 350,
   },
 });
