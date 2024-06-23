@@ -23,10 +23,7 @@ mongo = PyMongo(app)
 def pestPredict(mdl):
     model = YOLO('pest_model.pt')
     pred_value = model.predict(mdl, save=True)
-
-    
     return pred_value
-
 
 @app.route("/user/signup", methods=['POST'])
 def detect_object():
@@ -41,7 +38,6 @@ def detect_object():
         uContactNo = data['uContactNo']
         uPassword = data['uPassword']
         
-
         user = {
             "uID": uID,
             "uName": uName,
@@ -61,75 +57,6 @@ def welcome():
     all_users_json = json_util.dumps(all_users)
     return jsonify(all_users_json)
 
-@app.route("/pest/predict", methods=['POST'])
-def pestPredictMethod():
-    image = request.files['image']
-    basepath = os.path.dirname(__file__)
-    filepath = os.path.join(basepath,'Pest_Image_Uploads',image.filename)
-    print("upload folder is ", filepath)
-    image.save(filepath)
-    global imgpath
-    pestPredictMethod.imgpath = image.filename
-    print("printing predict_img :::::: ", pestPredictMethod)
-
-    file_extension = image.filename.rsplit('.', 1)[1].lower() 
-
-    if file_extension == 'jpg':
-        img = cv2.imread(filepath)
-        frame = cv2.imencode('.jpg', cv2.UMat(img))[1].tobytes()
-                
-
-        Pimage = Image.open(io.BytesIO(frame))
-        print(Pimage)
-                # Perform the detection
-        yolo = YOLO('pest_model.pt')
-        detections = yolo.predict(Pimage, save=True, source='runs/detect')
-        return display(image.filename)
-    
-    folder_path = 'runs/detect'
-    subfolders = [f for f in os.listdir(folder_path) if os.path.isdir(os.path.join(folder_path, f))]    
-    latest_subfolder = max(subfolders, key=lambda x: os.path.getctime(os.path.join(folder_path, x)))    
-    image_path = folder_path+'/'+latest_subfolder+'/'+image.filename 
-    #return render_template('index.html', image_path=image_path)
-    return "done"
-
-    #pestname = pestPredict(image)
-    #print(image)
-    #print(pestname)
-    #model = YOLO('pest_model.pt')
-    #for result in image:
-      #  boxes = result.boxes.xyxy.cpu().numpy()  
-      #  labels = [model.names[int(cls)] for cls in result.boxes.cls]
-#confidences = result.boxes.conf.cpu().numpy()
-       # for box, label, confidence in zip(boxes, labels, confidences):
-       #     print(f"Box: {box}, Label: {label}, Confidence: {confidence}")
-    #results = model('C:/Users/sajin/Desktop/New folder/Ino-Agri-Mobile-App/Flask_Backend/mypest.png')
-    #return jsonify(results)
-
-# #The display function is used to serve the image or video from the folder_path directory.
-@app.route('/<path:filename>')
-def display(filename):
-    folder_path = 'runs/detect'
-    subfolders = [f for f in os.listdir(folder_path) if os.path.isdir(os.path.join(folder_path, f))]    
-    latest_subfolder = max(subfolders, key=lambda x: os.path.getctime(os.path.join(folder_path, x)))    
-    directory = folder_path+'/'+latest_subfolder    
-    print("printing directory: ",directory) 
-    files = os.listdir(directory)
-    latest_file = files[0]
-    
-    print(latest_file)
-
-    filename = os.path.join(folder_path, latest_subfolder, latest_file)
-
-    file_extension = filename.rsplit('.', 1)[1].lower()
-
-    environ = request.environ
-    if file_extension == 'jpg':      
-        return send_from_directory(directory,latest_file,environ) #shows the result in seperate tab
-
-    else:
-        return "Format file salah!"
-
 # Define function for preprocessing images
 def preprocess_image(image_path):
     img = image.load_img(image_path, target_size=(224, 224))  # Assuming your model requires input size (224, 224)
@@ -138,50 +65,72 @@ def preprocess_image(image_path):
     img_array /= 255.  # Normalize pixel values to [0, 1]
     return img_array      
         
-@app.route("/pest/predict/next", methods=['POST'])
+@app.route("/pest/predict", methods=['POST'])
 def mytest():
+        # Fetch the image
+    file = request.files['image']
+    # Validate the image
+    if file.filename == '':
+        return jsonify({'error': 'No selected file'})
 
-    #Yolov8 object detection
+    # Save user entered image
+    save_path = './Pest_Image_Uploads'
+    if not os.path.exists(save_path):
+        os.makedirs(save_path)
+
+    upload_path = os.path.join(save_path, file.filename)
+    file.save(upload_path)
+
+    # ----Yolov8 object detection-----
+    # Load yolo model
     model = YOLO("pest_model.pt")
-    results = model.predict("next.png")
+    # Load input image
+    results = model.predict(upload_path)
+    # Get the result
     result = results[0]
     len(result.boxes)
     box = result.boxes[0]
     cords = box.xyxy[0].tolist()
     class_id = result.names[box.cls[0].item()]
     conf = round(box.conf[0].item(), 2)
-    print("YOLO V8")
-    print("Object type:", class_id)
-    print("Probability:", conf)
 
-    print("")
-    print("")
-    print("")
-    print("")
+    yolo_prediction = {
+        'object_type': class_id,
+        'probability': conf
+    }
 
-    #Inception V8 computer vision 
+    # -------Inception V8 computer vision---------
     # Load your custom Keras model
     model_path = './pest_classify_model.h5'
+    # Load the input image
     model = load_model(model_path)
+    # Create the label names
     class_names = ['Apids', 'Catterpillar', 'Leaf miner', 'Mites', 'Thrips', 'Whiteflies']
-    # Prepare sample image paths
-    sample_image_paths = './next.png'
     # Preprocess the image
-    preprocessed_image = preprocess_image(sample_image_paths)
+    preprocessed_image = preprocess_image(upload_path)
     # Make prediction
     prediction = model.predict(preprocessed_image)
     # Map probabilities to class names
     predicted_class_index = np.argmax(prediction)
     predicted_class = class_names[predicted_class_index]
-    # Display prediction
-    print(f"Prediction for image : {predicted_class} ({prediction[0][predicted_class_index]:.2f})")
-    #print(results)
 
-    if  predicted_class == class_id: 
-        print("Both get same output")
+    inception_prediction = {
+        'predicted_class': predicted_class,
+        #'probability': float(prediction[0][predicted_class_index])
+    }
+
+    response = {
+        'yolo_prediction': yolo_prediction,
+        'inception_prediction': inception_prediction
+    }
+
+    if predicted_class == class_id:
+        response['message'] = 'Both got same output'
     else:
-        print("Both gives different output")
-    return "Done"
+        response['message'] = 'Both got different output'
+
+    return jsonify(response)
+
 
 @app.route("/pest/try", methods=['POST'])
 def mytest2():
@@ -212,4 +161,4 @@ def upload_file():
     return 'File uploaded successfully'
 
 if __name__ == '__main__':
-    app.run(debug=True, host='192.168.1.101')
+    app.run(host='0.0.0.0', port=5000, debug=True)

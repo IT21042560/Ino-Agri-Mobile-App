@@ -1,0 +1,77 @@
+[33mcommit b05c3bda706ec6a6ed62412f06c194496eb69def[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: IT21042560 <it21042560@my.sliit.lk>
+Date:   Sun May 5 17:38:57 2024 +0530
+
+    Other functtions UI
+
+[33mcommit d3ff9f19cfb381054bd94c973bf1affa9007ff65[m
+Author: IT21042560 <it21042560@my.sliit.lk>
+Date:   Sun May 5 12:02:02 2024 +0530
+
+    Flash backend for pest
+
+[33mcommit 0e18476a3628a9fcd37f12ce356d2d3342ef5fe1[m
+Author: IT21042560 <it21042560@my.sliit.lk>
+Date:   Wed May 1 13:41:17 2024 +0530
+
+    Flask Backend created
+
+[33mcommit 7dc30f631595f445d37f93189f9e9b302f0cbd03[m
+Author: IT21042560 <it21042560@my.sliit.lk>
+Date:   Sun Apr 14 11:02:30 2024 +0530
+
+    User registraion backend api connected
+
+[33mcommit 20a3a1da40a9a45f6fb003bf49b0bfacb6755b45[m
+Author: IT21042560 <it21042560@my.sliit.lk>
+Date:   Sat Apr 13 20:25:33 2024 +0530
+
+    signup backend created
+
+[33mcommit fd9c525016fce37e5045b0d08454b6bd16b3a2ec[m
+Author: IT21042560 <it21042560@my.sliit.lk>
+Date:   Sat Apr 13 17:06:53 2024 +0530
+
+    Singup ui created
+
+[33mcommit 953e38372365a26c317755720c585584095a8438[m
+Author: IT21042560 <it21042560@my.sliit.lk>
+Date:   Sat Apr 13 15:17:38 2024 +0530
+
+    Login page created
+
+[33mcommit 0fbcfb3d8b914bb761929bdab9490623f324ea9d[m[33m ([m[1;31morigin/IT21045530[m[33m, [m[1;31morigin/IT21042560[m[33m, [m[1;31morigin/IT21022388[m[33m, [m[1;31morigin/IT20254216[m[33m)[m
+Author: IT21042560 <it21042560@my.sliit.lk>
+Date:   Fri Apr 12 21:22:03 2024 +0530
+
+    create branch
+
+[33mcommit 1ce4de2ed7df25284ad5bbeca79db61cef07e487[m
+Author: IT21042560 <it21042560@my.sliit.lk>
+Date:   Fri Apr 12 21:13:38 2024 +0530
+
+    Landing page ui created
+
+[33mcommit 13826a319e097f524d19ce9e61c55711a0d226b3[m
+Author: IT21042560 <it21042560@my.sliit.lk>
+Date:   Fri Apr 12 00:41:20 2024 +0530
+
+    Inital setup of backend & frontend
+
+[33mcommit 9c4deb46c623df55b7e5f113e92418c4ef4aa613[m
+Author: IT21042560 <it21042560@my.sliit.lk>
+Date:   Fri Apr 12 00:39:13 2024 +0530
+
+    Inital setup of backend & frontend
+
+[33mcommit 16203eeb2b4caa8e4dbc10eea295465c24ad5b7b[m
+Author: IT21042560 <it21042560@my.sliit.lk>
+Date:   Fri Apr 12 00:36:18 2024 +0530
+
+    Initial setpup of backend & frontend
+
+[33mcommit 262d8523d2b70b10d67c3240523e58c2e07d45f6[m
+Author: IT21042560 <87378474+IT21042560@users.noreply.github.com>
+Date:   Thu Apr 11 23:45:57 2024 +0530
+
+    Initial commit

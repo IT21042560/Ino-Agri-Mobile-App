@@ -185,7 +185,7 @@ export default function DiseasesDashboard(props) {
                 paddingHorizontal: 30,
               }}
             >
-              <Button
+              {/* <Button
                 icon={"retweet"}
                 onpress={() => {
                   setType(
@@ -194,7 +194,7 @@ export default function DiseasesDashboard(props) {
                       : CameraType.back
                   );
                 }}
-              />
+              /> */}
               <Button
                 icon={"flash"}
                 color={

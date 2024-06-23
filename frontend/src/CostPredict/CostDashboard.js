@@ -70,12 +70,12 @@ export default function CostDashboard(props) {
           </Text>
         </View>
         <View style={{ paddingRight: 30, paddingTop: 10 }}>
-          <AntDesign
+          {/* <AntDesign
             name="back"
             size={25}
             color="white"
             onPress={() => props.navigation.navigate("Home")}
-          />
+          /> */}
         </View>
       </View>
 
