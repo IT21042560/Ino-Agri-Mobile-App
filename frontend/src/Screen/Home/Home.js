@@ -25,50 +25,7 @@ const Home = (props) => {
       }}
     >
       <Header />
-      <View>
-        <ScrollView>
-          <Image
-            style={{ width: "100%", height: 180 }}
-            source={require("../assets/pest_cover.png")}
-          />
-
-          <View style={{ paddingTop: 10 }}>
-            <View
-              style={{
-                backgroundColor: "#2f4f4f",
-                height: 100,
-                width: "90%",
-                alignSelf: "center",
-                paddingTop:10
-              }}
-            >
-              <View
-                style={{
-                  backgroundColor: "#004242",
-                  height: 'auto',
-                  alignSelf: "center",
-                  width: "90%",
-                  paddingTop: 10,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <FontAwesome
-                  name="lightbulb-o"
-                  size={30}
-                  color={"white"}
-                  style={{
-                    borderRadius: 100,
-                    padding:2,
-                    
-                  }}
-                />
-                <Text style={{fontSize:18, color:'#68e8cb', fontWeight:'bold'}}>Innovation & sustainability are our commitment</Text>
-              </View>
-            </View>
-          </View>
-        </ScrollView>
-      </View>
+     
       <Footer />
     </View>
   );

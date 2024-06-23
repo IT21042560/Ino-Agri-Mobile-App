@@ -6,6 +6,7 @@ import {
   Image,
   Alert,
   ScrollView,
+  FlatList,
 } from "react-native";
 import React, { useState, useRef } from "react";
 import Header from "../Screen/Header/Index";
@@ -13,6 +14,7 @@ import Footer from "../Screen/Footer/Index";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 export default function PestDashboard(props) {
+
   return (
     <View style={styles.mainContainer}>
       <Header />
@@ -72,7 +74,13 @@ export default function PestDashboard(props) {
                     source={require("./assets/pest_4.png")}
                     style={styles.image}
                   />
-                  <Text style={{ color: "#6a859f", fontWeight: "bold", marginLeft:15 }}>
+                  <Text
+                    style={{
+                      color: "#6a859f",
+                      fontWeight: "bold",
+                      marginLeft: 15,
+                    }}
+                  >
                     Thrips
                   </Text>
                 </View>
@@ -81,12 +89,14 @@ export default function PestDashboard(props) {
                     source={require("./assets/pest_5.png")}
                     style={styles.image}
                   />
-                  <Text style={styles.gridText}>
-                    Whiteflies
-                  </Text>
+                  <Text style={styles.gridText}>Whiteflies</Text>
                 </View>
               </View>
             </View>
+          </View>
+
+          <View>
+            
           </View>
 
           {/* <View style={{ paddingTop: 10 }}>
