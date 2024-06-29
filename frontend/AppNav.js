@@ -15,6 +15,7 @@ import SoilDetails from "./src/FertilizerPredict/SoilDetails";
 import CostDashboard from "./src/CostPredict/CostDashboard";
 import CostData from "./src/CostPredict/CostData";
 import OpenCamara from "./src/PestControll/OpenCamara";
+import PestAnswer from "./src/PestControll/PestAnswer";
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +43,7 @@ export default function AppNav() {
         <Stack.Screen name="CostDashboard" component={CostDashboard} /> 
         <Stack.Screen name="CostData" component={CostData} /> 
         <Stack.Screen name="OpenPestCamara" component={OpenCamara} /> 
+        <Stack.Screen name="PestAnswer" component={PestAnswer} /> 
 
         </Stack.Navigator>
       ) : (

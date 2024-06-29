@@ -133,6 +133,59 @@ export default function PestDashboard(props) {
             </View>
           </View>
 
+
+          <View style={{ paddingTop: 30 }}>
+            <View></View>
+            <View>
+              {/* <LottieView
+                source={require("./animations/Animation - 1719145590451.json")}
+                autoPlay
+                loop
+                style={{ width: 200, height: 200, }}
+              /> */}
+              <Image
+                source={require("./assets/ar_ai.gif")}
+                style={{ width: "100%", height: 150 }}
+              />
+              <View
+                style={{
+                  height: "auto",
+                  alignSelf: "center",
+                  width: "80%",
+                  paddingTop: 20,
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <FontAwesome
+                  name="cube"
+                  size={25}
+                  color={"#33705b"}
+                  style={{
+                    padding: 10,
+                  }}
+                />
+                <Text
+                  style={{
+                    textAlign: "justify",
+                    lineHeight: 24,
+                    letterSpacing: -0.5,
+                  }}
+                >
+                  With our augmented reality (AR) feature, you can view and experience a 3D model of the identified pest right in your field. This immersive experience will help you understand the pest's characteristics and behavior better.
+                </Text>
+
+                <View style={{ paddingTop: 20 }}>
+                  <Button
+                    title="AR View"
+                    onPress={() => navigation.navigate("OpenPestCamara")}
+                    color={"#33705b"}
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+
           <View style={{ paddingTop: 30 }}>
             <View style={{ justifyContent: "center" }}>
               <Text style={styles.subHedding}>The Most Common Pests</Text>

@@ -13,6 +13,7 @@ import * as ImagePicker from "expo-image-picker";
 import Header from "../Screen/Header/Index";
 import Footer from "../Screen/Footer/Index";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import { useNavigation } from "@react-navigation/native";
 
 export default function OpenCamara(props) {
   const [facing, setFacing] = useState("back");
@@ -20,6 +21,7 @@ export default function OpenCamara(props) {
   const [mediaLibraryPermission, requestMediaLibraryPermission] =
     MediaLibrary.usePermissions();
   const cameraRef = useRef(null);
+  const navigation = useNavigation();
 
   const [pickedImage, setPickedImage] = useState(null);
 
@@ -60,14 +62,14 @@ export default function OpenCamara(props) {
 
       // Pass the photo to the backend
       const formData = new FormData();
-      formData.append("photo", {
+      formData.append("image", {
         uri: photo.uri,
         name: "photo.jpg",
         type: "image/jpeg",
       });
 
       try {
-        const response = await fetch("YOUR_BACKEND_URL", {
+        const response = await fetch("http://192.168.1.100:5000/pest/predict", {
           method: "POST",
           body: formData,
           headers: {
@@ -76,7 +78,9 @@ export default function OpenCamara(props) {
         });
 
         if (response.ok) {
+          const responseData = await response.json();
           Alert.alert("Success", "Photo uploaded successfully");
+          navigation.navigate("PestAnswer", {res: responseData,  imageUri: photo.uri,})
         } else {
           Alert.alert("Error", "Failed to upload photo");
         }
@@ -98,14 +102,14 @@ export default function OpenCamara(props) {
       setPickedImage(result.assets[0].uri);
       // Pass the photo to the backend
       const formData = new FormData();
-      formData.append("photo", {
+      formData.append("image", {
         uri: result.assets[0].uri,
         name: "photo.jpg",
         type: "image/jpeg",
       });
 
       try {
-        const response = await fetch("YOUR_BACKEND_URL", {
+        const response = await fetch("http://192.168.1.100:5000/pest/predict", {
           method: "POST",
           body: formData,
           headers: {
@@ -115,6 +119,7 @@ export default function OpenCamara(props) {
 
         if (response.ok) {
           Alert.alert("Success", "Photo uploaded successfully");
+          console.log(response)
         } else {
           Alert.alert("Error", "Failed to upload photo");
         }

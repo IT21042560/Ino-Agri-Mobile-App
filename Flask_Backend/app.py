@@ -81,6 +81,15 @@ def mytest():
     upload_path = os.path.join(save_path, file.filename)
     file.save(upload_path)
 
+    # Save user entered image 2
+    save_path_2 = '../frontend/pest_uploaded_images'
+    if not os.path.exists(save_path_2):
+        os.makedirs(save_path_2)
+
+    upload_path_2 = os.path.join(save_path_2, file.filename)
+    file.save(upload_path_2)
+
+
     # ----Yolov8 object detection-----
     # Load yolo model
     model = YOLO("pest_model.pt")
@@ -114,6 +123,9 @@ def mytest():
     predicted_class_index = np.argmax(prediction)
     predicted_class = class_names[predicted_class_index]
 
+    if predicted_class == "Apids": 
+        predicted_class = "Aphids"
+
     inception_prediction = {
         'predicted_class': predicted_class,
         #'probability': float(prediction[0][predicted_class_index])
@@ -121,13 +133,14 @@ def mytest():
 
     response = {
         'yolo_prediction': yolo_prediction,
-        'inception_prediction': inception_prediction
+        'inception_prediction': inception_prediction,
+        'image_name' : file.filename
     }
 
     if predicted_class == class_id:
-        response['message'] = 'Both got same output'
+        response['message'] = True
     else:
-        response['message'] = 'Both got different output'
+        response['message'] = False
 
     return jsonify(response)
 
