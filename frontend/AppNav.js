@@ -10,10 +10,15 @@ import Home from "./src/Screen/Home/Home";
 import PestDashboard from "./src/PestControll/PestDashboard";
 import DiseasesDashboard from "./src/DiseasesControl/DiseasesDashboard";
 import FeritilizerDashboard from "./src/FertilizerPredict/FeritilizerDashboard";
+
+import CultivationDetails from "./src/FertilizerPredict/CultivationDetails";
+import SoilDetails from "./src/FertilizerPredict/SoilDetails";
+
 import CostDashboard from "./src/CostPredict/CostDashboard";
 import CostData from "./src/CostPredict/CostData";
 import OpenCamara from "./src/PestControll/OpenCamara";
 import PestAnswer from "./src/PestControll/PestAnswer";
+
 import HarvestDashboard from "./src/HarvestPredict/HarvestDashboard";
 import PredictHarvest from "./src/HarvestPredict/PredictHarvest";
 import NextButton from "./src/HarvestPredict/NextButton";
@@ -43,6 +48,10 @@ export default function AppNav() {
         <Stack.Screen name="PestDashboard" component={PestDashboard} />
         <Stack.Screen name="DiseasesDashboard" component={DiseasesDashboard} />
         <Stack.Screen name="FertilizerDashboard" component={FeritilizerDashboard} />
+
+        <Stack.Screen name="CultivationDetails" component={CultivationDetails} />
+        <Stack.Screen name="SoilDetails" component={SoilDetails} /> 
+
         <Stack.Screen name="CostDashboard" component={CostDashboard} /> 
         <Stack.Screen name="CostData" component={CostData} /> 
         <Stack.Screen name="OpenPestCamara" component={OpenCamara} /> 
