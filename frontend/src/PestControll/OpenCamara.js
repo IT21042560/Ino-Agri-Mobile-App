@@ -69,7 +69,7 @@ export default function OpenCamara(props) {
       });
 
       try {
-        const response = await fetch("http://192.168.1.100:5000/pest/predict", {
+        const response = await fetch("http://192.168.1.4:5000/pest/predict", {
           method: "POST",
           body: formData,
           headers: {
@@ -80,7 +80,7 @@ export default function OpenCamara(props) {
         if (response.ok) {
           const responseData = await response.json();
           Alert.alert("Success", "Photo uploaded successfully");
-          navigation.navigate("PestAnswer", {res: responseData,  imageUri: photo.uri,})
+          navigation.navigate("PestAnswer", {res: responseData,  imageUri: photo.uri})
         } else {
           Alert.alert("Error", "Failed to upload photo");
         }
@@ -109,7 +109,7 @@ export default function OpenCamara(props) {
       });
 
       try {
-        const response = await fetch("http://192.168.1.100:5000/pest/predict", {
+        const response = await fetch("http://192.168.1.4:5000/pest/predict", {
           method: "POST",
           body: formData,
           headers: {
@@ -118,8 +118,9 @@ export default function OpenCamara(props) {
         });
 
         if (response.ok) {
+          const responseData = await response.json();
           Alert.alert("Success", "Photo uploaded successfully");
-          console.log(response)
+          navigation.navigate("PestAnswer", {res: responseData,  imageUri:result.assets[0].uri})
         } else {
           Alert.alert("Error", "Failed to upload photo");
         }

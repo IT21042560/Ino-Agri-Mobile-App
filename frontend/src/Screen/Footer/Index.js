@@ -45,6 +45,7 @@ export default function Footer() {
         size={25}
         color={"white"}
         style={{ marginLeft: "auto", paddingRight: 5 }}
+        onPress={() => navigation.navigate("HarvestDashboard")}
       />
       </TouchableOpacity>
 
