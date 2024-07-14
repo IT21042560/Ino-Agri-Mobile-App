@@ -42,7 +42,7 @@ import {
               <Text
                 style={{
                   color: "black",
-                  fontSize: 30,
+                  fontSize: 20,
                   fontWeight: "bold",
                   marginTop: 10,
                   marginBottom: 10,
@@ -55,7 +55,6 @@ import {
                 style={{
                   color: "black",
                   fontSize: 15,
-                  fontWeight: "bold",
                   letterSpacing: 2,
                 }}
               >
@@ -68,7 +67,7 @@ import {
                   height: 810,
                   width: "100%",
                   borderTopRightRadius: 100,
-                  paddingTop: 40,
+                  paddingTop: 10,
                   //alignItems: "flex-start",
                   marginTop: 20,
                 }}
@@ -76,7 +75,7 @@ import {
                 <Text
                   style={{
                     color: fontgreen,
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: 900,
                     letterSpacing: 5,
                     paddingLeft: 10,

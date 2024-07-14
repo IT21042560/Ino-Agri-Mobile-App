@@ -54,8 +54,7 @@ export default function HarvestDashboard(props) {
                     padding: 10,
                   }}
                 />
-                <Text style={styles.subHedding}>Harvest Smarter</Text>
-                <Text style={styles.subHedding}>
+                <Text style={styles.subHedding}>Harvest Smarter
                   Predict, Analyze & Cultivate.
                 </Text>
                 <View>

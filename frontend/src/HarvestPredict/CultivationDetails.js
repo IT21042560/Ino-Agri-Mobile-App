@@ -43,7 +43,7 @@ export default function CultivationDetails(props) {
             <Text
               style={{
                 color: "black",
-                fontSize: 30,
+                fontSize: 20,
                 fontWeight: "bold",
                 marginTop: 10,
                 marginBottom: 10,
@@ -56,7 +56,6 @@ export default function CultivationDetails(props) {
               style={{
                 color: "black",
                 fontSize: 15,
-                fontWeight: "bold",
                 letterSpacing: 2,
               }}
             >
@@ -69,7 +68,7 @@ export default function CultivationDetails(props) {
                 height: 810,
                 width: "100%",
                 borderTopRightRadius: 100,
-                paddingTop: 40,
+                paddingTop: 10,
                 //alignItems: "flex-start",
                 marginTop: 20,
               }}

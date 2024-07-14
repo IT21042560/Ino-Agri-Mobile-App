@@ -42,7 +42,7 @@ export default function PredictHarvest(props) {
             <Text
               style={{
                 color: "black",
-                fontSize: 30,
+                fontSize: 25,
                 fontWeight: "bold",
                 marginTop: 10,
                 marginBottom: 10,
@@ -55,8 +55,6 @@ export default function PredictHarvest(props) {
               style={{
                 color: "black",
                 fontSize: 15,
-                fontWeight: "bold",
-                letterSpacing: 2,
                 padding:10,
                 lineHeight: 25
               }}
@@ -70,18 +68,18 @@ export default function PredictHarvest(props) {
                 height: 810,
                 width: "100%",
                 borderTopRightRadius: 100,
-                paddingTop: 40,
+                paddingTop: 10,
                 //alignItems: "flex-start",
-                marginTop: 20,
+                marginTop: 5,
               }}
             >
               <Text
                 style={{
                   color: fontgreen,
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: 900,
                   letterSpacing: 5,
-                  paddingLeft: 10,
+                  paddingLeft: 20,
                 }}
               >
                 CULTIVATION DETAILS
