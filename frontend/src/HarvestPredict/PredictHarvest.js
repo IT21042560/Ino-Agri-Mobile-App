@@ -1,25 +1,18 @@
 import {
   StyleSheet,
   Text,
-  TextInput,
   View,
-  TouchableOpacity,
   Image,
-  Alert,
   ScrollView,
   FlatList,
-  Button,
-  Picker,
 } from "react-native";
-import React, { useState, useRef } from "react";
+import React from "react";
 import Header from "../Screen/Header/Index";
 import Footer from "../Screen/Footer/Index";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import LottieView from "lottie-react-native";
 import { useNavigation } from "@react-navigation/native";
 import {
   darkGreen,
-  green,
   shadegreen,
   fontgreen,
 } from "../LoginAndSignup/LandingPageConstants";
@@ -27,6 +20,25 @@ import NextButton from "./NextButton";
 
 export default function PredictHarvest(props) {
   const navigation = useNavigation();
+
+  const bulletPoints = [
+    "The details of the project",
+    "The soil condition",
+    "Fertilizer amounts",
+    "Provide the season of the crop",
+    "Enter the grade of the crop",
+    "Expected rainfall",
+    "Expected temperature",
+    "Expected harvest from the crop",
+  ];
+
+  const renderItem = ({ item }) => (
+    <View style={styles.bulletItem}>
+      <FontAwesome name="envira" size={20} color={darkGreen} />
+      
+      <Text style={styles.bulletText}>{item}</Text>
+    </View>
+  );
 
   return (
     <View style={styles.mainContainer}>
@@ -39,133 +51,24 @@ export default function PredictHarvest(props) {
           />
 
           <View style={{ alignItems: "center" }}>
-            <Text
-              style={{
-                color: "black",
-                fontSize: 25,
-                fontWeight: "bold",
-                marginTop: 10,
-                marginBottom: 10,
-                letterSpacing: 1.5,
-              }}
-            >
+            <Text style={styles.mainHeading}>
               Actual Harvest Prediction
             </Text>
-            <Text
-              style={{
-                color: "black",
-                fontSize: 15,
-                padding:10,
-                lineHeight: 25
-              }}
-            >
+            <Text style={styles.subHeading}>
               To predict the Actual Harvest of your crop, you need to enter the below details ...
             </Text>
 
-            <View
-              style={{
-                backgroundColor: shadegreen,
-                height: 810,
-                width: "100%",
-                borderTopRightRadius: 100,
-                paddingTop: 10,
-                //alignItems: "flex-start",
-                marginTop: 5,
-              }}
-            >
-              <Text
-                style={{
-                  color: fontgreen,
-                  fontSize: 18,
-                  fontWeight: 900,
-                  letterSpacing: 5,
-                  paddingLeft: 20,
-                }}
-              >
-                CULTIVATION DETAILS
-              </Text>
+            <FlatList
+              data={bulletPoints}
+              renderItem={renderItem}
+              keyExtractor={(item, index) => index.toString()}
+              contentContainerStyle={styles.bulletList}
+            />
 
-              <View
-                style={{
-                  height: 700,
-                  width: "100%",
-                  borderTopRightRadius: 100,
-                  //paddingLeft:30,
-                  //alignItems: "center",
-                  marginTop: 20,
-                }}
-              >
-                <Text style={styles.subHedding}>Province</Text>
+            <View style={styles.formContainer}>
+              <View style={styles.inputContainer}>
 
-                <TextInput
-                  style={styles.textbox}
-                  placeholderTextColor="grey"
-                  placeholder="Province"
-                  //onChangeText={(e) => setFullName(e)}
-                ></TextInput>
-
-                <Text style={styles.subHedding}>Project</Text>
-
-                <TextInput
-                  style={styles.textbox}
-                  placeholderTextColor="grey"
-                  placeholder="Project"
-                  //onChangeText={(e) => setFullName(e)}
-                ></TextInput>
-
-                <Text style={styles.subHedding}>Acerage</Text>
-
-                <TextInput
-                  style={styles.textbox}
-                  placeholderTextColor="grey"
-                  placeholder="Acerage"
-                  //onChangeText={(e) => setFullName(e)}
-                ></TextInput>
-
-                <Text style={styles.subHedding}>Season</Text>
-
-                <TextInput
-                  style={styles.textbox}
-                  placeholderTextColor="grey"
-                  placeholder="Season"
-                  //onChangeText={(e) => setFullName(e)}
-                ></TextInput>
-
-                <Text style={styles.subHedding}>Grade</Text>
-
-                <TextInput
-                  style={styles.textbox}
-                  placeholderTextColor="grey"
-                  placeholder="Grade"
-                  //onChangeText={(e) => setFullName(e)}
-                ></TextInput>
-
-                <Text style={styles.subHedding}>Expected Rainfall</Text>
-
-                <TextInput
-                  style={styles.textbox}
-                  placeholderTextColor="grey"
-                  placeholder="Rainfall"
-                  //onChangeText={(e) => setFullName(e)}
-                ></TextInput>
-
-                <Text style={styles.subHedding}>Expected Temperature</Text>
-
-                <TextInput
-                  style={styles.textbox}
-                  placeholderTextColor="grey"
-                  placeholder="Temperature"
-                  //onChangeText={(e) => setFullName(e)}
-                ></TextInput>
-
-                <View
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    
-                  }}
-                >
+                <View style={styles.buttonContainer}>
                   <NextButton
                     textColor="white"
                     width={150}
@@ -191,61 +94,63 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingTop: 30,
   },
-  subHedding: {
-    textAlign: "left",
-    fontSize: 13,
-    fontWeight: "800",
-    color: darkGreen,
-    paddingLeft: 20,
+  mainHeading: {
+    color: "black",
+    fontSize: 25,
+    fontWeight: "bold",
+    marginTop: 10,
+    marginBottom: 10,
     letterSpacing: 1.5,
   },
-  mainHeading: {
-    paddingTop: 12,
-    textAlign: "left",
-    fontSize: 22,
-    fontWeight: "bold",
-    color: "#061f1e",
+  subHeading: {
+    color: "black",
+    fontSize: 15,
+    padding: 10,
+    lineHeight: 25,
+    textAlign: 'center',
   },
-  image: {
-    width: 80,
-    height: 90,
-    marginLeft: 0,
-    marginRight: 20,
+  bulletList: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    width: '100%',
   },
-  imageGridContainer1: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 10,
-  },
-  imageGridRow: {
+  bulletItem: {
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 10,
-    paddingTop: 10,
   },
-  gridText: {
-    textAlign: "center",
-    color: "#6a859f",
-    fontWeight: "bold",
+  bulletText: {
+    marginLeft: 10,
+    color: "black",
+    fontSize: 15,
   },
-  textbox: {
-    borderRadius: 15,
-    color: darkGreen,
-    paddingHorizontal: 10,
-    width: "80%",
-    backgroundColor: "rgb(220,220,220)",
-    marginVertical: 10,
-    padding: 15,
-    marginLeft: 25,
+  formContainer: {
+    backgroundColor: shadegreen,
+    height: 80,
+    width: "100%",
+    borderTopRightRadius: 100,
+    //addingTop: 10,
+    
   },
-  dropdown: {
-    height: 50,
-    width: "80%",
-    backgroundColor: "rgb(220,220,220)",
-    borderRadius: 100,
-    marginVertical: 10,
-    padding: 15,
+  inputContainer: {
+    height: 150,
+    width: "100%",
+    borderTopRightRadius: 100,
+    marginTop: 5,
+  },
+  iconStyle: {
+    padding: 10,
+  },
+  formTitle: {
+    color: fontgreen,
+    fontSize: 18,
+    fontWeight: "900",
+    letterSpacing: 5,
+    paddingLeft: 20,
+  },
+  buttonContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
   },
 });

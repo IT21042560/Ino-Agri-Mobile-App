@@ -42,7 +42,7 @@ export default function FertilizerDetails(props) {
             <Text
               style={{
                 color: "black",
-                fontSize: 25,
+                fontSize: 20,
                 fontWeight: "bold",
                 marginTop: 10,
                 marginBottom: 10,
@@ -64,7 +64,7 @@ export default function FertilizerDetails(props) {
             <View
               style={{
                 backgroundColor: shadegreen,
-                height: 810,
+                height: 650,
                 width: "100%",
                 borderTopRightRadius: 100,
                 paddingTop: 10,
