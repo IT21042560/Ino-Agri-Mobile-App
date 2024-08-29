@@ -11,9 +11,16 @@ import { AuthContext } from "../../Context/AuthContext";
 import Header from "../Header/Index";
 import Footer from "../Footer/Index";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import * as Speech from 'expo-speech';
+
+
 
 const Home = (props) => {
   const { UserLogOut } = useContext(AuthContext);
+
+  const speak = () => {
+    Speech.speak('ආයුබෝවන් ලෝකයට සාදරයෙන් පිළිගනිමු');
+  };
 
   return (
     <View
@@ -25,7 +32,10 @@ const Home = (props) => {
       }}
     >
       <Header />
-     
+      <View>
+      <Button title="Speak" onPress={speak} />
+    </View>
+
       <Footer />
     </View>
   );

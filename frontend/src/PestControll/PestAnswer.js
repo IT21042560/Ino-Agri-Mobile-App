@@ -1,10 +1,18 @@
-import { ScrollView, StyleSheet, Text, View, Image } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Button,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { useRoute } from "@react-navigation/native";
 import Header from "../Screen/Header/Index";
 import Footer from "../Screen/Footer/Index";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import PestContext from "./content/index.js";
+import * as Speech from "expo-speech";
 
 export default function PestAnswer() {
   const route = useRoute();
@@ -44,6 +52,10 @@ export default function PestAnswer() {
       );
     }
   }, [predictedClass, objectType]);
+
+  const speak = () => {
+    Speech.speak("ආයුබෝවන් ලෝකයට සාදරයෙන් පිළිගනිමු");
+  };
 
   return (
     <View style={styles.mainContainer}>
@@ -194,6 +206,9 @@ export default function PestAnswer() {
                 </View>
               </View>
             )}
+          </View>
+          <View>
+            <Button title="Speak" onPress={speak} />
           </View>
         </View>
       </ScrollView>
